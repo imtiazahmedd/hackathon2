@@ -1,38 +1,47 @@
 import  React ,{Component} from 'react';
-import  {View,Text,TouchableOpacity,StyleSheet,Dimensions,TextInput} from 'react-native';
+import  {View,Text,TouchableOpacity,StyleSheet,Dimensions,TextInput,Image} from 'react-native';
 import { Button } from 'react-native';
 const { width, height } = Dimensions.get('window');
-
 
 
 export default class Home extends Component{
     constructor(){
         super();
         this.state={
-            text : ''
-        }
-    }    render(){console.log("to b checked",this.state)
+           // text : ''
+        };
+        setTimeout(()=>{this.props.navigation.navigate("Dashboard"),15000})
+
+    }
+
+    componentDidMount(){
+
+    }
+    render(){
         return(
-            <View>
-                <View style={{flex: 1,flexDirection: 'column'}}>
-                    <View style={{height: 50}}>
-                        <TouchableOpacity onPress={()=>this.props.navigation.navigate("About")}>
-                            <Text style={{textAlign:'center',fontSize : 30 , fontWeight: 'bold',color : 'red'}}>
-                                Home page
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={{height: 200,alignItems:'center'}}>
-                        <View>
-                         <TextInput style={{height: 60, width:width*0.6}}
-                                    onChangeText={(text)=>{this.setState({text:text})}}
-                         />
+
+            <View style={{flex: 1,flexDirection: 'column',}}>
+                <View style={{backgroundColor:'rgb(1, 37, 71)',height:height*1}}>
+                    <View style={{marginTop: height*0.2}}>
+                        <View style={{height: height*0.25}}>
+                            <Image style={{width:width*1}}
+                                source={require('../images/img1.png')}
+                            />
                         </View>
-                        <Button title="submit" color="#841584" />
+                        <View style={{ height: height*0.1}} >
+
+                            <TouchableOpacity>
+                                <Image
+                                    style={{width:width*1}}
+                                    source={require('../images/img2.png')}
+                                />
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
 
             </View>
+
         )
     }
 }
