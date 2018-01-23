@@ -3,12 +3,16 @@ import  {View,Text,TouchableOpacity,StyleSheet,Dimensions,TextInput,Image,AsyncS
 import { Button } from 'react-native';
 import AddIncome from "./addincome";
 const { width, height } = Dimensions.get('window');
+import ModalDropdown from 'react-native-modal-dropdown';
+
 
 
 export default class Incomes extends Component{
     constructor(props){
         super(props);
         this.state={
+            year : '2018',
+            month : 'jan',
         data : {}
         };
 
@@ -46,7 +50,15 @@ export default class Incomes extends Component{
                     </View>
                 </View>
                 <View style={{backgroundColor: 'skyblue',height:height*0.2}}>
-
+                    <View style={{flexDirection:'row', flexWrap:'wrap',height: height*0.15,width:width*0.9,alignItems:'center',justifyContent:'center'}}>
+                        <Text style={{fontWeight:'bold',fontSize:15,paddingRight:10}}>Select Month/Year</Text>
+                        <ModalDropdown onSelect={(i,value)=>this.setState({year : value})} options={['Jan', 'Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']}>
+                            <Text style={{marginLeft:5,fontWeight:'bold',fontSize:20}}>{this.state.year}</Text>
+                        </ModalDropdown>
+                        <ModalDropdown onSelect={(i,value)=>this.setState({month : value})} options={['2012', '2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']}>
+                            <Text style={{marginLeft:5,fontWeight:'bold',fontSize:20}}>{this.state.month}</Text>
+                        </ModalDropdown>
+                    </View>
                 </View>
                     <ScrollView>
                     <View style={{marginLeft:20,marginRight:20,borderWidth:1,borderColor:'grey',flexDirection:'row', flexWrap:'wrap',height :height*0.1,alignItems:'center',justifyContent:'center'}}>
@@ -55,7 +67,7 @@ export default class Incomes extends Component{
                         <Text style={{fontWeight:'bold',fontSize :20,marginHorizontal:20}}>Cost</Text>
                     </View>
                     {this.state.getData && this.state.getData.map(ele=>{
-                    {console.log(ele,'element************************')}
+                    {onsole.log(ele,'element************************')}c
                         return <View style={{marginLeft:20,marginRight:20,borderWidth:1,borderColor:'grey',flexDirection:'row', flexWrap:'wrap',height :height*0.1,alignItems:'center',justifyContent:'center'}}>
                                     <Text style={{fontSize :20,marginHorizontal:28}}>{ele.category}</Text>
                                     <Text style={{fontSize :20,marginHorizontal:28}}>{ele.by}</Text>

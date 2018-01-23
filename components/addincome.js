@@ -10,8 +10,8 @@ export default class AddIncome extends Component{
         super();
 
         this.state={
-            year : '',
-            month : '',
+            year : '2018',
+            month : 'jan',
             category : '',
             by : '',
             cost : '',
@@ -74,10 +74,10 @@ export default class AddIncome extends Component{
                         <View style={{flexDirection:'row', flexWrap:'wrap',height: height*0.15,width:width*0.9,alignItems:'center',justifyContent:'center'}}>
                             <Text style={{fontWeight:'bold',fontSize:15,paddingRight:10}}>Select Month/Year</Text>
                             <ModalDropdown onSelect={(i,value)=>this.setState({year : value})} options={['Jan', 'Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec']}>
-                                <Text>select Month</Text>
+                                <Text>{this.state.year}</Text>
                             </ModalDropdown>
                             <ModalDropdown onSelect={(i,value)=>this.setState({month : value})} options={['2012', '2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023']}>
-                                <Text style={{marginLeft:5}}>Select year</Text>
+                                <Text style={{marginLeft:5}}>{this.state.month}</Text>
                             </ModalDropdown>
                         </View>
                         <View style={{flexDirection:'row', flexWrap:'wrap',height: height*0.15,width:width*0.8,alignItems:'center',justifyContent:'center'}} >
